@@ -25,8 +25,8 @@ function shuffle(){// 카드 섞기
 	return carddeck;
 }
 
-for(var i=0; i<shuffle().length; i++){
-	var createcard = "<img src='./pic/backimg.jpg' class=deck id="+shuffle()[i]+" width='100px' height='150px'>"
+for(var i=0; i<shuffle().length; i++){//카드 깔기
+	var createcard = "<img src='./pic/backimg.jpg' class=deck id="+shuffle()[i]+" width='100px' height='150px'>&nbsp"
 	$("#cardground").append(createcard);
 }
 
