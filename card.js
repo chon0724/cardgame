@@ -35,44 +35,31 @@ function cardset(){ //카드 깔기
 
 cardset();
 
-var count = 0;
-var checkcard = [];
-
 $(document).ready(function(){
    $(document).on("click","img",function(){ //클릭시 id 값 가져와서 사진 매치 시키기
-         if($(this).hasClass($(this).attr('class')) === true){
+     var check = $(this).hasClass('back');
+     var CSS = $(this).attr('class');
 
-            $(this).attr('src','./pic/'+$(this).attr('class')+'.jpg');
-            checkcard.push($(this).attr('class'));
-            count ++;
-            console.log(count);
+     if(!check && CSS != "success"){
+       $(this).attr('src','./pic/'+CSS+'.jpg');
+       $(this).addClass("back");
+     } else{
+       console.log("back");
+     }
+     var BackLength = $(".back").length;
 
-            if(count < 0){
-            	document.getElementById(this).onclick = null;
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-            /*
-            if(checkcard.length > 1){
-            	if(checkcard[0] === checkcard[1]){
-            		console.log(checkcard[0],checkcard[1]);
-            		checkcard = [];
-            	}
-            	else{
-            		console.log('false',checkcard[0],checkcard[1]);
-            		checkcard = [];
-            	}
-            }*/
-         }
+     if(BackLength == 2){
+       var FirstB = $('.back').eq(0).attr('class');
+       var SecondB = $('.back').eq(1).attr('class');
+       if(FirstB != SecondB){
+         setTimeout(function(){
+           $(".back").attr('src','./pic/backimg.jpg');
+           $("img").removeClass("back");
+         },500);
+       } else{
+         $(".back").attr("class","success");
+       }
+       BackLength = 0;
+     }
    });
 });
